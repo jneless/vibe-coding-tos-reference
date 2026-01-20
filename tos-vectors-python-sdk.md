@@ -266,11 +266,7 @@ Date: Mon, 10 Dec 2025 12:49:14 GMT
 
 | 名称 | 参数类型 | 是否必选 | 示例值 | 说明 |
 | --- | --- | --- | --- | --- |
-| vectorBucketName | string | 是 | test-vector-bucket | 要创建的向量桶的名称。<br>
-
-<br>约束：<br>
-
-<br><ul><li>最小长度为 3，最大长度为 32。</li><li>只能包含小写英文字母 (a - z)、数字 (0 - 9) 以及短横线 (-)，不支持大写字母、下划线、中文或其他特殊字符。</li><li>桶名的开头和结尾只能是小写字母或数字，不能以短横线开头或结尾。</li><li>单账号单 Region 下名称必须唯一。</li></ul> |
+| vectorBucketName | string | 是 | test-vector-bucket | 要创建的向量桶的名称约束：<ul><li>最小长度为 3，最大长度为 32。</li><li>只能包含小写英文字母 (a - z)、数字 (0 - 9) 以及短横线 (-)，不支持大写字母、下划线、中文或其他特殊字符。</li><li>桶名的开头和结尾只能是小写字母或数字，不能以短横线开头或结尾。</li><li>单账号单 Region 下名称必须唯一。</li></ul> |
 
 ## 响应消息头
 
@@ -555,36 +551,25 @@ Date: Mon, 10 Dec 2025 12:49:14 GMT
 
 | 名称 | 参数类型 | 示例值 | 说明 |
 | --- | --- | --- | --- |
-| policy | string | '{<br>
+| policy | string | 见示例 | 定义策略的 JSON 字符串。 |
 
-<br>"Version": "2025-12-01",<br>
-
-<br>"Statement": [{<br>
-
-<br>"Effect": "Allow",<br>
-
-<br>"Principal": [<br>
-
-<br>"210004xxxx/testuser"<br>
-
-<br>],<br>
-
-<br>"Action": [<br>
-
-<br>"tosvectors:*"<br>
-
-<br>],<br>
-
-<br>"Resource": [<br>
-
-<br>"trn:tosvectors:cn-beijing:11111:bucket/test-vector-bucket"<br>
-
-<br>]<br>
-
-<br>}]<br>
-
-<br>}' | 定义策略的 JSON 字符串。 |
-
+```
+'{
+"Version": "2025-12-01",
+"Statement": [{
+"Effect": "Allow",
+"Principal": [
+"210004xxxx/testuser"
+],
+"Action": [
+"tosvectors:*"
+],
+"Resource": [
+"trn:tosvectors:cn-beijing:11111:bucket/test-vector-bucket"
+]
+}]
+}'
+```
 
 
 # DeleteVectorBucketPolicy
@@ -659,16 +644,14 @@ Date: Mon, 10 Dec 2025 12:49:14 GMT
 
 | 名称 | 参数类型 | 是否必选 | 示例值 | 说明 |
 | --- | --- | --- | --- | --- |
-| policy | string | 是 | 见示例 | 定义策略的 JSON 文本。<br>
+| policy | string | 是 | 见示例 | 定义策略的 JSON 文本 |
+| vectorBucketName | string | 是 | test-vector-bucket | 向量存储桶的名称。长度限制：最小 3，最大 32。vectorBucketName 必须提供。|
 
-<br>TRN 定义：<br>
+* TRN 定义：
+    * 向量桶：`trn:tosvectors:<region>:<account-id>:bucket/<bucket-name>`
+    * 向量索引：`trn:tosvectors:<region>:<account-id>:bucket/<bucket-name>/index/<index-name>` 
 
-<br><ul><li>向量桶：`trn:tosvectors:<region>:<account-id>:bucket/<bucket-name>`</li><li>向量索引：`trn:tosvectors:<region>:<account-id>:bucket/<bucket-name>/index/<index-name>`</li></ul> |
-| vectorBucketName | string | 是 | test-vector-bucket | 向量存储桶的名称。<br>
 
-<br>长度限制：最小 3，最大 32。<br>
-
-<br>vectorBucketName 必须提供。 |
 
 ## 响应消息头
 
@@ -715,17 +698,9 @@ Date: Mon, 10 Dec 2025 12:49:14 GMT
 | --- | --- | --- | --- | --- |
 | vectorBucketName | string | 是 | test-vector-bucket | 向量桶的名称。 |
 | indexName | string | 是 | test-index | 向量索引的名称。 |
-| keys | string[] | 是 | ["key0", "key1"] | 您想要返回其属性的向量名称列表。<br>
-
-<br>数组项数：最少 1 项，最多 100 项。<br>
-
-<br>字符串长度：最少 1 个字符，最多 1024 个字符。 |
-| returnData | boolean | 否 | true | 指示是否在响应中包含向量数据。<br>
-
-<br>默认值：`false`。 |
-| returnMetadata | boolean | 否 | true | 指示是否在响应中包含元数据。<br>
-
-<br>默认值：`false`。 |
+| keys | string[] | 是 | ["key0", "key1"] | 您想要返回其属性的向量名称列表。数组项数：最少 1 项，最多 100 项。字符串长度：最少 1 个字符，最多 1024 个字符。 |
+| returnData | boolean | 否 | true | 指示是否在响应中包含向量数据。默认值：`false`。 |
+| returnMetadata | boolean | 否 | true | 指示是否在响应中包含元数据。默认值：`false`。 |
 
 ## 响应消息头
 
@@ -752,9 +727,7 @@ VectorData 结构体是 Union 类型，当前只有一个成员有效（float32�
 
 | 名称 | 参数类型 | 说明 |
 | --- | --- | --- |
-| float32 | float32[] | 向量数据。<br>
-
-<br>该向量维度必须和 CreateIndex 中定义的向量索引维度一致。 |
+| float32 | float32[] | 向量数据。该向量维度必须和 CreateIndex 中定义的向量索引维度一致。 |
 
 # DeleteVectors
 
@@ -790,11 +763,7 @@ Date: Mon, 10 Dec 2025 12:49:14 GMT
 | --- | --- | --- | --- | --- |
 | vectorBucketName | string | 是 | test-vector-bucket | 向量桶的名称。 |
 | indexName | string | 是 | test-index | 向量索引的名称。 |
-| keys | string[] | 是 | ["key0", "key1"] | 您想要返回其属性的向量名称列表。<br>
-
-<br>数组项数：最少 1 项，最多 100 项。<br>
-
-<br>字符串长度：最少 1 个字符，最多 1024 个字符。 |
+| keys | string[] | 是 | ["key0", "key1"] | 您想要返回其属性的向量名称列表。数组项数：最少 1 项，最多 100 项。 字符串长度：最少 1 个字符，最多 1024 个字符。 |
 
 ## 响应消息头
 
