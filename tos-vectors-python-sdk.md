@@ -1001,7 +1001,7 @@ QueryOutputVector 结构体参数说明：
 
 # SDK
 
-# CreateVectorBucket（TOS Vectors Python SDK）
+## CreateVectorBucket
 
 ```
 # 创建向量存储桶
@@ -1047,7 +1047,7 @@ except Exception as e:
     print('fail with unknown error: {}'.format(e))
 ```
 
-# DeleteVectorBucket（TOS Vectors Python SDK）
+## DeleteVectorBucket
 ```
 # 删除向量存储桶基本用法
 import os
@@ -1095,7 +1095,7 @@ except Exception as e:
     print('fail with unknown error: {}'.format(e))
 ```
 
-# GetVectorBucket（TOS Vectors Python SDK）
+## GetVectorBucket
 ```
 # 查询指定向量桶的信息
 import os
@@ -1148,7 +1148,7 @@ except Exception as e:
     print('fail with unknown error: {}'.format(e))
 ```
 
-# ListVectorBuckets（TOS Vectors Python SDK）
+## ListVectorBuckets
 
 ```
 # 分页列举向量存储桶
@@ -1223,7 +1223,7 @@ except Exception as e:
     print('fail with unknown error: {}'.format(e))
 ```
 
-# PutVectorBucketPolicy（TOS Vectors Python SDK）
+## PutVectorBucketPolicy
 
 ```
 # 设置向量桶的 IAM Policy
@@ -1288,7 +1288,7 @@ except Exception as e:
     print("fail with unknown error: {}".format(e))
 ```
 
-# GetVectorBucketPolicy（TOS Vectors Python SDK）
+## GetVectorBucketPolicy
 ```
 # 获取向量存储桶策略
 import os
@@ -1334,7 +1334,7 @@ except tos.exceptions.TosServerError as e:
 except Exception as e:
     print('fail with unknown error: {}'.format(e))
 ```
-# DeleteVectorBucketPolicy（TOS Vectors Python SDK）
+## DeleteVectorBucketPolicy
 ```
 # 删除向量桶的IAM Policy
 import os
@@ -1384,7 +1384,7 @@ except tos.exceptions.TosServerError as e:
 except Exception as e:
     print('fail with unknown error: {}'.format(e))
 ```
-# CreateIndex（TOS Vectors Python SDK）
+## CreateIndex
 ```
 # 创建向量索引基本用法
 import os
@@ -1434,7 +1434,7 @@ except Exception as e:
     print("fail with unknown error: {}".format(e))
 ```
 
-# DeleteIndex（TOS Vectors Python SDK）
+## DeleteIndex
 ```
 # 删除指定向量索引
 import os
@@ -1489,7 +1489,7 @@ except Exception as e:
     print('fail with unknown error: {}'.format(e))
 ```
 
-# GetIndex（TOS Vectors Python SDK）
+## GetIndex
 ```
 # 获取指定向量索引的信息
 import os
@@ -1553,7 +1553,7 @@ except Exception as e:
     print('fail with unknown error: {}'.format(e))
 ```
 
-# ListIndexes（TOS Vectors Python SDK）
+## ListIndexes
 ```
 # 列举向量索引基本用法
 import os
@@ -1613,7 +1613,7 @@ except Exception as e:
     print('fail with unknown error: {}'.format(e))
 ```
 
-# PutVectors（TOS Vectors Python SDK）
+## PutVectors
 ```
 # 向量索引中批量插入向量
 import os
@@ -1680,7 +1680,7 @@ except Exception as e:
     print('fail with unknown error: {}'.format(e))
 ```
 
-# DeleteVectors（TOS Vectors Python SDK）
+## DeleteVectors
 ```
 # 批量删除向量
 import os
@@ -1739,7 +1739,7 @@ except Exception as e:
     print('fail with unknown error: {}'.format(e))
 ```
 
-# GetVectors（TOS Vectors Python SDK）
+## GetVectors
 
 ```
 # 根据向量key批量查询向量
@@ -1801,7 +1801,7 @@ except Exception as e:
 ```
 
 
-# ListVectors（TOS Vectors Python SDK）
+## ListVectors
 ```
 # 列举向量基本用法
 import os
@@ -1876,7 +1876,7 @@ except Exception as e:
     print('fail with unknown error: {}'.format(e))
 ```
 
-# QueryVectors（TOS Vectors Python SDK）
+## QueryVectors
 ```
 # 查询距离最近TopK向量
 import os
