@@ -809,7 +809,7 @@ for vector in result.vectors:
     "default": 500,
     "min": 1,
     "max": 1000,
-    "description": "最大返回数量，超过1MB会提前停止"
+    "description": "最大返回数量，超过1MB会提前停止并返回已检索的向量以及用于后续请求的nextToken"
   },
   "nextToken": {
     "type": "string",
@@ -898,7 +898,7 @@ for vector in result.vectors:
     "type": "integer",
     "required": true,
     "min": 1,
-    "max": 1000,
+    "max": 30,
     "description": "返回最相似的向量数量"
   },
   "returnDistance": {
@@ -1107,8 +1107,8 @@ all_vectors = []
 while True:
     result = client.list_vectors(
         vector_bucket_name=bucket_name,
-        account_id=account_id,
         index_name=index_name,
+        account_id=account_id,
         max_results=100,
         next_token=next_token
     )
@@ -1425,7 +1425,7 @@ ListVectors → GetVectors → DeleteVectors → PutVectors
 | PutVectors | 1-500 个/次 | 单次批量插入向量数量 |
 | GetVectors | 1-100 个/次 | 单次批量查询向量数量 |
 | DeleteVectors | 1-100 个/次 | 单次批量删除向量数量 |
-| QueryVectors TopK | 1-1000 | 单次查询返回的最大向量数 |
+| QueryVectors TopK | 1-30 | 单次查询返回的最大向量数 |
 | ListVectors MaxResults | 1-1000 | 单次列举的最大向量数 |
 | ListVectors 数据大小 | 1MB | 超过 1MB 会提前停止并返回 nextToken |
 | ListVectorBuckets MaxResults | 1-500 | 单次列举的最大桶数 |
